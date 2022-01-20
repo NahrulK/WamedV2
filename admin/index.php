@@ -1,9 +1,22 @@
 ﻿<?php
 
+session_start();
+
 //koneksi ke database
 $koneksi = new mysqli("localhost", "root", "", "wamedv2");
 
-?>
+if(!isset($_SESSION['admin'])) {
+
+    echo "<script>alert('Anda Harus Login');</script>";
+    echo "<script>location='login.php';</script>";
+    
+    exit();
+ 
+}
+
+ ?>
+
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,7 +50,7 @@ $koneksi = new mysqli("localhost", "root", "", "wamedv2");
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="index.php?halaman=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -87,6 +100,8 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     include 'ubahpelanggan.php';
                 }elseif($_GET['halaman'] == 'hapuspelanggan'){
                     include 'hapuspelanggan.php';
+                }elseif($_GET['halaman'] == 'logout'){
+                    include 'logout.php';
                 }
             }else {
                 include 'home.php';
