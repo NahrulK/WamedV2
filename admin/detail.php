@@ -13,7 +13,7 @@ $detail = $ambil->fetch_assoc();
 
 ?>
 
-<pre><?php print_r($detail); ?></pre>
+<!-- <pre><?php //print_r($detail); ?></pre> -->
 
 <strong><?php echo $detail['nama_pelanggan']; ?></strong><br>
 <p>
@@ -23,7 +23,7 @@ $detail = $ambil->fetch_assoc();
 
 <p>
     Tanggal :<?php echo $tanggal_pembelian; ?> <br>
-    Totall :<?php echo $pertotal; ?> <br>
+    Totall :Rp. <?php echo number_format($pertotal); ?> <br>
 </p>
 
 
@@ -46,10 +46,10 @@ $detail = $ambil->fetch_assoc();
         <tr>
             <td><?php echo $nomor; ?></td>
             <td><?php echo $pecah['nama_produk'];?></td>
-            <td><?php echo $pecah['harga_produk'];?></td>
+            <td>Rp. <?php echo number_format($pecah['harga_produk']);?></td>
             <td><?php echo $pecah['jumlah']; ?></td>
             <td>
-                <?php echo $pecah['harga_produk']*$pecah['jumlah']; ?>
+                Rp. <?php echo number_format($pecah['harga_produk']*$pecah['jumlah']); ?>
             </td>
         </tr>
         <?php $nomor++;?>

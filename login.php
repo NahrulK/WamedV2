@@ -1,6 +1,6 @@
 <?php
 session_start();
-$koneksi = new mysqli("localhost", "root", "", "wamedv2");
+include "koneksi.php";
 ?>
 
 <!DOCTYPE html>

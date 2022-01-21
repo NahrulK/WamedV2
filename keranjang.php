@@ -3,7 +3,7 @@
 session_start();
 
 //koneksi ke database
-$koneksi = new mysqli("localhost", "root", "", "wamedv2");
+include "koneksi.php";
 
 if(empty($_SESSION["keranjang"]) OR !isset($_SESSION['keranjang'])){
 
