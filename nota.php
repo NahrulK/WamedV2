@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include "koneksi.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,26 +11,7 @@
 </head>
 <body>    
 
-<!-- NavBar -->
-<nav class="navbar navbar-default">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="keranjang.php">Keranjang</a></li>
-
-                <!-- jika sudah login -->
-                <?php if(isset($_SESSION['pelanggan'])) : ?>
-                    <li><a href="logout.php">Logout</a></li>
-                <?php else : ?>
-                <!-- Jika belum login -->
-                    <li><a href="login.php">Logit</a></li>
-                <?php endif; ?>
-
-                <li><a href="checkout.php">Checkout</a></li>               
-            </ul>          
-        </div>
-    </nav>
-<!-- Closing NavBar -->
+<?php include('menu.php'); ?>
 
 
 <section class="konten">
@@ -42,6 +24,20 @@
 $ambil = $koneksi->query("SELECT * FROM pembelian JOIN pelanggan ON pembelian.id_pelanggan = pelanggan.id_pelanggan WHERE pembelian.id_pembelian = '$_GET[id]'");
 
 $detail = $ambil->fetch_assoc();
+
+?>
+
+<!-- Melakukan pembelokiran terhadap user, jika user nota tida sama dengan session yg login maka alihkan -->
+
+<?php
+$pelangganYangBeli = $detail["id_pelanggan"]; // data pelanggan yang punya nota
+$pelangganYangLogin = $_SESSION["pelanggan"]["id_pelanggan"]; // data pelanggan yg sedang login
+
+if($pelangganYangBeli !== $pelangganYangLogin){
+        echo "<script>alert('Jangan nakal yaa');</script>";
+        echo "<script>location='riwayat.php';</script>";
+        exit();
+}
 
 ?>
 

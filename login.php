@@ -14,27 +14,7 @@ include "koneksi.php";
 </head>
 <body>
 
-<!-- NavBar -->
-<nav class="navbar navbar-default">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="keranjang.php">Keranjang</a></li>
-                
-                <!-- jika sudah login -->
-                <?php if(isset($_SESSION['pelanggan'])) : ?>
-                    <li><a href="logout.php">Logout</a></li>
-                <?php else : ?>
-                <!-- Jika belum login -->
-                    <li><a href="login.php">Logit</a></li>
-                <?php endif; ?>
-
-
-                <li><a href="checkout.php">Checkout</a></li>               
-            </ul>          
-        </div>
-    </nav>
-<!-- Closing NavBar -->
+<?php include('menu.php'); ?>
     
 <div class="container">
     <div class="row">
@@ -86,8 +66,14 @@ if(isset($_POST["simpan"])){
         //simpan di session pelanggan
         $_SESSION['pelanggan'] = $akun;
 
+        // mebagi tujuan login
         echo "<script>alert('Anda berhasil login');</script>";
-        echo "<script>location='checkout.php';</script>";
+        if(isset($_SESSION["keranjang"]) OR !empty($_SESSION["keranjang"]))
+        {
+            echo "<script>location='checkout.php';</script>";
+        }else {
+            echo "<script>location='riwayat.php';</script>";
+        }
 
     }else {
         // Pesan Gagal login
