@@ -15,17 +15,37 @@ $detail = $ambil->fetch_assoc();
 
 <!-- <pre><?php //print_r($detail); ?></pre> -->
 
-<strong><?php echo $detail['nama_pelanggan']; ?></strong><br>
-<p>
-    <?php echo $detail['telepon_pelanggan']; ?> <br>
-    <?php echo $detail['email_pelanggan']; ?> <br>
-</p>
 
-<p>
-    Tanggal :<?php echo $tanggal_pembelian; ?> <br>
-    Totall :Rp. <?php echo number_format($pertotal); ?> <br>
-</p>
 
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Pembelian</h3>
+        <p>
+            Tanggal :<?php echo $tanggal_pembelian; ?> <br>
+            Totall :Rp. <?php echo number_format($pertotal); ?> <br>
+            Status : <?php echo $detail['status_pembelian']; ?>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>Pelanggan</h3>
+        <strong><?php echo $detail['nama_pelanggan']; ?></strong><br>
+            <p>
+                <?php echo $detail['telepon_pelanggan']; ?> <br>
+                <?php echo $detail['email_pelanggan']; ?> <br>
+            </p>
+        </div>
+        <div class="col-md-4">
+        <h3>Pengiriman</h3>
+        <strong><?php echo $detail['nama_kota']; ?></strong><br>
+            <p>
+                Rp. <?php echo number_format($detail['tarif']); ?> <br>
+                <?php echo $detail['alamat_pengiriman']; ?> <br>
+            </p>
+        </div>
+</div>
 
 
 <table class="table table-bordered">

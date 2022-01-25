@@ -51,11 +51,20 @@ if(!isset($_SESSION['pelanggan']) OR empty($_SESSION['pelanggan'])){
                 <tr>
                     <td><?php echo $number ?></td>
                     <td><?php echo $pecah['tanggal_pembelian']; ?></td>
-                    <td><?php echo $pecah['status_pembelian']; ?></td>
+                    <td><?php echo $pecah['status_pembelian']; ?>
+                    <br>
+                    <?php if(!empty($pecah['resi_pengiriman'])) : ?>
+                       Resi Pengiriman : <?php echo $pecah['resi_pengiriman'] ;?>
+                    <?php endif ?>
+                    </td>
                     <td>Rp. <?php echo number_format($pecah['total_pembelian']); ?></td>
                     <td>
                         <a href="nota.php?id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-info">Nota</a>
-                        <a href="nota.php?id=<?php ?>" class="btn btn-primary">Pembayaran</a>
+                            <?php if($pecah['status_pembelian'] == 'pending') : ?>
+                            <a href="pembayaran.php?id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-primary">input Pembayaran</a>
+                        <?php else : ?>
+                            <a href="lihat_pembayaran.php?id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-warning">Lihat Pembayaran</a>
+                        <?php endif;?>
                     </td>
                 </tr>
                 <?php $number++; ?>

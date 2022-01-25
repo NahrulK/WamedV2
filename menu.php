@@ -18,6 +18,12 @@
 
                 <li><a href="checkout.php">Checkout</a></li>               
             </ul>          
+
+            <form action="pencarian.php" method="get" class="navbar-form navbar-right">
+                    <input type="text" name="keyword" class="form-control">
+                    <button class="btn btn-primary" >Cari</button>
+            </form>
+
         </div>
     </nav>
     <!-- Closing NavBar -->

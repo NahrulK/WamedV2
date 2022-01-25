@@ -61,11 +61,13 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="index.php?halaman=l
 					</li>
 				
 					
-                    <li><a  href="index.php"><i class="fa fa-dashboard fa-3x"></i> Home</a></li>
-                    <li><a  href="index.php?halaman=pembelian"><i class="fa fa-dashboard fa-3x"></i> Pembelian</a></li>
-                    <li><a  href="index.php?halaman=produk"><i class="fa fa-dashboard fa-3x"></i> Produk</a></li>
-                    <li><a  href="index.php?halaman=pelanggan"><i class="fa fa-dashboard fa-3x"></i> Pelanggan</a></li>
-                    <li><a  href="index.php?halaman=logout"><i class="fa fa-dashboard fa-3x"></i> Logout</a></li>
+                    <li><a  href="index.php"><i class="fa fa-dashboard "></i> Home</a></li>
+                    <li><a  href="index.php?halaman=pembelian"><i class="fa fa-file "></i> Pembelian</a></li>
+                    <li><a  href="index.php?halaman=laporan_pembelian"><i class="fa fa-folder "></i> Laporan</a></li>
+                    <li><a  href="index.php?halaman=kategori"><i class="fa fa-book "></i> Kategori</a></li>
+                    <li><a  href="index.php?halaman=produk"><i class="fa fa-star "></i> Produk</a></li>
+                    <li><a  href="index.php?halaman=pelanggan"><i class="fa fa-user "></i> Pelanggan</a></li>
+                    <li><a  href="index.php?halaman=logout"><i class="fa fa-sign-out "></i> Logout</a></li>
                      
                 </ul>
                
@@ -102,7 +104,14 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="index.php?halaman=l
                     include 'hapuspelanggan.php';
                 }elseif($_GET['halaman'] == 'logout'){
                     include 'logout.php';
+                }elseif($_GET['halaman'] == 'pembayaran'){
+                    include 'pembayaran.php';
+                }elseif($_GET['halaman'] == 'laporan_pembelian'){
+                    include 'laporan_pembelian.php';
+                }elseif($_GET['halaman'] == 'kategori'){
+                    include 'kategori.php';
                 }
+
             }else {
                 include 'home.php';
             }

@@ -144,8 +144,12 @@ if(isset($_POST['checkout']))
 
         $subberat = $perproduk['berat_produk']*$jumlah;
         $subharga = $perproduk['harga_produk']*$jumlah;
-                
+        
+        // Memasukan data kedapan daftar pembelian setelah cek
         $koneksi->query("INSERT INTO pembelian_produk (id_pembelian,id_produk,nama,harga,berat,subberat,subharga,jumlah) VALUES ('$id_pembelian_barusaja','$id_produk','$nama','$harga','$berat','$subberat','$subharga','$jumlah') ");
+
+        // mengurangkan atau mengupdate stok
+        $koneksi->query("UPDATE produk SET stok_produk = stok_produk - $jumlah WHERE id_produk='$id_produk'");
     }
 
     // mengosongkan keranjang
