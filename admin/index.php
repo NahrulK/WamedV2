@@ -34,6 +34,8 @@ if(!isset($_SESSION['admin'])) {
     <link href="assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!-- JQUERY SCRIPTS -->
+   <script src="assets/js/jquery-1.10.2.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -110,6 +112,10 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="index.php?halaman=l
                     include 'laporan_pembelian.php';
                 }elseif($_GET['halaman'] == 'kategori'){
                     include 'kategori.php';
+                }elseif($_GET['halaman'] == 'detailproduk'){
+                    include 'detailproduk.php';
+                }elseif($_GET['halaman'] == 'hapusphotoproduk'){
+                    include 'hapusphotoproduk.php';
                 }
 
             }else {
@@ -125,8 +131,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="index.php?halaman=l
         </div>
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
